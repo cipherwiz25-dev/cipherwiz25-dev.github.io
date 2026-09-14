@@ -202,9 +202,9 @@
 
         <div class="gallery-grid">
 
-            <img src="images/project2.jpeg" alt="Steel work">
-            <img src="images/project3.jpeg" alt="Steel work">
-            <img src="images/project4.jpeg" alt="Steel work">
+            <img src="images/project2.jpg" alt="Steel work">
+            <img src="images/project3.jpg" alt="Steel work">
+            <img src="images/project4.jpg" alt="Steel work">
 
             <!-- Add more images here -->
             <!--
@@ -307,31 +307,38 @@
             </div>
 
 
-            <form class="contact-form" onsubmit="sendMessage(event)">
+            <form class="contact-form" action="https://formspree.io/f/xzeblybr" method="POST">
 
                 <input
                     type="text"
                     id="name"
+                    name="name"
                     placeholder="Your Name"
                     required>
 
                 <input
                     type="email"
                     id="email"
+                    name="email"
                     placeholder="Your Email"
                     required>
 
                 <input
                     type="text"
                     id="subject"
+                    name="subject"
                     placeholder="Subject"
                     required>
 
                 <textarea
                     id="message"
+                    name="message"
                     rows="6"
                     placeholder="Tell us about your project..."
                     required></textarea>
+
+
+                <input type="hidden" name="_replyto" id="_replyto">
 
                 <button type="submit" class="btn primary">
                     Send Message
@@ -376,6 +383,20 @@
         💬
     </a>
 
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const emailField = document.getElementById("email");
+    const replyTo = document.getElementById("_replyto");
+
+    if (emailField && replyTo) {
+        emailField.addEventListener("input", function () {
+            replyTo.value = emailField.value;
+        });
+        replyTo.value = emailField.value;
+    }
+});
+</script>
 
     <script src="script.js"></script>
 
